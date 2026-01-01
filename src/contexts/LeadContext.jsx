@@ -11,15 +11,17 @@ export function LeadProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  async function fetchLeads() {
+  async function fetchLeads(filters = {}) {
     try {
       setLoading(true);
       setError(null);
 
-      const res = await axiosInstance.get("/leads");
+      const res = await axiosInstance.get("/leads", {
+        params: filters,
+      });
       setLeads(res.data);
     } catch (error) {
-      setError(error);
+      setError(error.response?.data?.message || "Failed to fetch leads");
     } finally {
       setLoading(false);
     }
@@ -30,7 +32,7 @@ export function LeadProvider({ children }) {
   }, []);
 
   return (
-    <LeadContext.Provider value={{ leads, loading, error }}>
+    <LeadContext.Provider value={{ leads, loading, error, fetchLeads }}>
       {children}
     </LeadContext.Provider>
   );
