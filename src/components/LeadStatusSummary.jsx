@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import useLeadContext from "../contexts/LeadContext";
 import { FaUser } from "react-icons/fa";
 import { MdContactPhone } from "react-icons/md";

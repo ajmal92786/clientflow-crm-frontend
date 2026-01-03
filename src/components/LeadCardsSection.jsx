@@ -2,11 +2,11 @@ import useLeadContext from "../contexts/LeadContext";
 import LeadCard from "./LeadCard";
 
 function LeadCardsSection() {
-  const { leads, loading, error } = useLeadContext();
+  const { leads, leadsLoading, leadsError } = useLeadContext();
 
   return (
     <div className="">
-      {loading && (
+      {leadsLoading && (
         <div className="w-100 text-center p-3">
           <div className="spinner-border text-dark" role="status">
             <span className="visually-hidden">Loading...</span>
@@ -14,11 +14,11 @@ function LeadCardsSection() {
         </div>
       )}
 
-      {!loading && error && (
+      {!leadsLoading && leadsError && (
         <div className="p-3 text-danger">Something went wrong!</div>
       )}
 
-      {!loading && !error && (
+      {!leadsLoading && !leadsError && (
         <>
           <h4 className="py-3 my-2 text-center">Recent Leads</h4>
           {leads.length > 0 ? (

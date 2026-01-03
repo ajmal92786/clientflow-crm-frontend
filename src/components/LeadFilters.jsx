@@ -1,19 +1,45 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import useSalesAgentContext from "../contexts/SalesAgentContext";
 import useLeadContext from "../contexts/LeadContext";
+import { useSearchParams } from "react-router-dom";
 
 function LeadFilters() {
-  const [filters, setFilters] = useState({});
-  const { salesAgents } = useSalesAgentContext();
+  const [searchParams, setSearchParams] = useSearchParams();
   const { fetchLeads } = useLeadContext();
-
-  console.log("filters: ", filters);
+  const { salesAgents } = useSalesAgentContext();
 
   const statuses = ["New", "Contacted", "Qualified", "Proposal Sent", "Closed"];
+  const filters = Object.fromEntries([...searchParams.entries()]);
+
+  const updateParam = (key, value) => {
+    const params = new URLSearchParams(searchParams);
+
+    if (!value) {
+      params.delete(key);
+    } else {
+      params.set(key, value);
+    }
+
+    setSearchParams(params);
+  };
+
+  const updateParams = (updates) => {
+    const params = new URLSearchParams(searchParams);
+
+    Object.entries(updates).forEach(([key, value]) => {
+      if (!value) {
+        params.delete(key);
+      } else {
+        params.set(key, value);
+      }
+    });
+
+    setSearchParams(params);
+  };
 
   useEffect(() => {
     fetchLeads(filters);
-  }, [filters]);
+  }, [searchParams]);
 
   return (
     <div className="px-3 d-flex justify-content-between align-items-center mt-3">
@@ -23,12 +49,7 @@ function LeadFilters() {
       <div className="col-md-6 d-flex gap-2">
         <select
           className="form-select"
-          onChange={(e) =>
-            setFilters((prev) => ({
-              ...prev,
-              status: e.target.value || undefined,
-            }))
-          }
+          onChange={(e) => updateParam("status", e.target.value)}
         >
           <option value="">Status</option>
           {statuses.map((status) => (
@@ -40,12 +61,7 @@ function LeadFilters() {
 
         <select
           className="form-select"
-          onChange={(e) =>
-            setFilters((prev) => ({
-              ...prev,
-              salesAgent: e.target.value || undefined,
-            }))
-          }
+          onChange={(e) => updateParam("salesAgent", e.target.value)}
         >
           <option value="">Sales Agent</option>
           {salesAgents.map((agent) => (
@@ -57,12 +73,7 @@ function LeadFilters() {
 
         <select
           className="form-select"
-          onChange={(e) =>
-            setFilters((prev) => ({
-              ...prev,
-              priority: e.target.value || undefined,
-            }))
-          }
+          onChange={(e) => updateParam("priority", e.target.value)}
         >
           <option value="">Priority</option>
           <option value="High">High</option>
@@ -77,7 +88,7 @@ function LeadFilters() {
           className="form-select"
           onChange={(e) => {
             const [sortBy, order] = e.target.value.split(":");
-            setFilters((prev) => ({ ...prev, sortBy, order }));
+            updateParams({ sortBy, order });
           }}
         >
           <option value="">Sort by</option>

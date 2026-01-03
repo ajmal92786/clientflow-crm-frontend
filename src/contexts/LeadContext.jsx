@@ -8,22 +8,44 @@ export default useLeadContext;
 
 export function LeadProvider({ children }) {
   const [leads, setLeads] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [leadDetails, setLeadDetails] = useState(null);
+
+  const [leadsLoading, setLeadsLoading] = useState(true);
+  const [leadDetailsLoading, setLeadDetailsLoading] = useState(true);
+
+  const [leadsError, setLeadsError] = useState(null);
+  const [leadDetailsError, setLeadDetailsError] = useState(null);
 
   async function fetchLeads(filters = {}) {
     try {
-      setLoading(true);
-      setError(null);
+      setLeadsLoading(true);
+      setLeadsError(null);
 
       const res = await axiosInstance.get("/leads", {
         params: filters,
       });
       setLeads(res.data);
     } catch (error) {
-      setError(error.response?.data?.message || "Failed to fetch leads");
+      setLeadsError(error.response?.data?.message || "Failed to fetch leads");
     } finally {
-      setLoading(false);
+      setLeadsLoading(false);
+    }
+  }
+
+  async function fetchLeadById(id) {
+    try {
+      setLeadDetailsLoading(true);
+      setLeadDetailsError(null);
+
+      const res = await axiosInstance.get(`/leads/${id}`);
+
+      setLeadDetails(res.data);
+    } catch (error) {
+      setLeadDetailsError(
+        error.response?.data?.message || "Failed to fetch lead details"
+      );
+    } finally {
+      setLeadDetailsLoading(false);
     }
   }
 
@@ -32,7 +54,18 @@ export function LeadProvider({ children }) {
   }, []);
 
   return (
-    <LeadContext.Provider value={{ leads, loading, error, fetchLeads }}>
+    <LeadContext.Provider
+      value={{
+        leads,
+        leadsLoading,
+        leadsError,
+        leadDetails,
+        leadDetailsLoading,
+        leadDetailsError,
+        fetchLeads,
+        fetchLeadById,
+      }}
+    >
       {children}
     </LeadContext.Provider>
   );

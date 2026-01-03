@@ -1,0 +1,18 @@
+import AddCommentComponent from "./AddCommentComponent";
+import CommentsList from "./CommentsList";
+
+function CommentsSection() {
+  return (
+    <div className="mt-5 col-md-8 card border-0 shadow">
+      <h5 className="card-header py-3">Comments:</h5>
+
+      <div className="p-3">
+        <CommentsList />
+      </div>
+
+      <AddCommentComponent />
+    </div>
+  );
+}
+
+export default CommentsSection;
