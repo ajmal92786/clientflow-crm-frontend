@@ -1,16 +1,22 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useLeadContext from "../contexts/LeadContext";
 import Header from "./Header";
 import CommentsSection from "./CommentsSection";
 
 function LeadDetails() {
-  const { leadDetails, leadDetailsLoading, leadDetailsError, fetchLeadById } =
+  const { leadDetails, leadDetailsLoading, leadDetailsError, getLeadById } =
     useLeadContext();
+
+  const navigate = useNavigate();
   const params = useParams();
 
+  const handleEditLeadClick = (leadDetails) => {
+    navigate(`/leads/${leadDetails.id}/edit`);
+  };
+
   useEffect(() => {
-    fetchLeadById(params.leadId);
+    getLeadById(params.leadId);
   }, []);
 
   return (
@@ -38,7 +44,10 @@ function LeadDetails() {
                   <span className="text-muted">Lead Management:</span>{" "}
                   {leadDetails.name}
                 </h5>
-                <button className="btn btn-sm btn-outline-primary">
+                <button
+                  onClick={() => handleEditLeadClick(leadDetails)}
+                  className="btn btn-sm btn-outline-primary"
+                >
                   Edit Lead Details
                 </button>
               </div>

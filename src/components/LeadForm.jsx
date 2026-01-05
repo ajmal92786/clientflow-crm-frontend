@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useSalesAgentContext from "../contexts/SalesAgentContext";
 import useLeadContext from "../contexts/LeadContext";
 import useToastContext from "../contexts/ToastContext";
 
-function LeadForm() {
-  const [leadDetails, setLeadDetails] = useState({
+function LeadForm({ mode = "create", initialValues }) {
+  const [newLeadData, setNewLeadData] = useState({
     name: "",
     source: "",
     salesAgent: "",
@@ -15,7 +15,7 @@ function LeadForm() {
     tags: [],
   });
   const { salesAgents } = useSalesAgentContext();
-  const { createLeadLoading, createLead } = useLeadContext();
+  const { createLeadLoading, createLead, updateLeadById } = useLeadContext();
   const { showToast } = useToastContext();
 
   const navigate = useNavigate();
@@ -24,15 +24,15 @@ function LeadForm() {
     const { name, value } = e.target;
 
     if (name === "timeToClose") {
-      setLeadDetails((prev) => ({
+      setNewLeadData((prev) => ({
         ...prev,
-        [name]: Number(value),
+        [name]: value === "" ? "" : Number(value),
       }));
 
       return;
     }
 
-    setLeadDetails((prev) => ({
+    setNewLeadData((prev) => ({
       ...prev,
       [name]: value,
     }));
@@ -44,25 +44,44 @@ function LeadForm() {
       (option) => option.value
     );
 
-    setLeadDetails((prev) => ({ ...prev, tags: values }));
+    setNewLeadData((prev) => ({ ...prev, tags: values }));
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const newLead = await createLead(leadDetails);
+      const result =
+        mode === "edit"
+          ? await updateLeadById(initialValues.id, newLeadData)
+          : await createLead(newLeadData);
 
-      showToast("Lead created successfully", "success");
-
-      navigate(`/leads/${newLead.id}`);
-    } catch (error) {
       showToast(
-        error?.response?.data?.message || "Failed to create lead",
-        "danger"
+        mode === "edit"
+          ? "Lead updated successfully"
+          : "Lead created successfully",
+        "success"
       );
+
+      navigate(`/leads/${result.id}`);
+    } catch (error) {
+      showToast(error?.response?.data?.message || "Operation failed", "danger");
     }
   };
+
+  useEffect(() => {
+    if (mode === "edit" && initialValues) {
+      setNewLeadData({
+        name: initialValues.name || "",
+        source: initialValues.source || "",
+        salesAgent: initialValues.salesAgent?.id || "",
+        status: initialValues.status || "New",
+        priority: initialValues.priority || "Medium",
+        timeToClose: initialValues.timeToClose || 1,
+        tags: initialValues.tags || [],
+      });
+    }
+  }, [mode, initialValues]);
 
   return (
     <div className="container my-5">
@@ -70,7 +89,9 @@ function LeadForm() {
         <div className="col-md-8">
           <div className="card shadow-sm border-0">
             <div className="card-header bg-white py-3">
-              <h4 className="mb-0 fw-semibold">Add New Lead</h4>
+              <h4 className="mb-0 fw-semibold">
+                {mode === "edit" ? "Edit Lead" : "Add New Lead"}
+              </h4>
             </div>
 
             <div className="card-body">
@@ -85,7 +106,7 @@ function LeadForm() {
                     className="form-control"
                     placeholder="Enter lead name"
                     required
-                    value={leadDetails.name}
+                    value={newLeadData.name}
                     onChange={handleFormChange}
                   />
                 </div>
@@ -98,7 +119,7 @@ function LeadForm() {
                     className="form-select"
                     required
                     name="source"
-                    value={leadDetails.source}
+                    value={newLeadData.source}
                     onChange={handleFormChange}
                   >
                     <option value="">Select source</option>
@@ -119,7 +140,7 @@ function LeadForm() {
                     className="form-select"
                     name="salesAgent"
                     required
-                    value={leadDetails.salesAgent}
+                    value={newLeadData.salesAgent}
                     onChange={handleFormChange}
                   >
                     <option value="">Select sales agent</option>
@@ -137,7 +158,7 @@ function LeadForm() {
                   <select
                     className="form-select"
                     name="status"
-                    value={leadDetails.status}
+                    value={newLeadData.status}
                     onChange={handleFormChange}
                   >
                     {[
@@ -159,7 +180,7 @@ function LeadForm() {
                   <select
                     className="form-select"
                     name="priority"
-                    value={leadDetails.priority}
+                    value={newLeadData.priority}
                     onChange={handleFormChange}
                   >
                     <option value="High">High</option>
@@ -179,7 +200,7 @@ function LeadForm() {
                     min={1}
                     className="form-control"
                     placeholder="Enter number of days"
-                    value={leadDetails.timeToClose}
+                    value={newLeadData.timeToClose}
                     onChange={handleFormChange}
                   />
                 </div>
@@ -192,7 +213,7 @@ function LeadForm() {
                     name="tags"
                     multiple
                     aria-describedby="tagsHelp"
-                    value={leadDetails.tags}
+                    value={newLeadData.tags}
                     onChange={handleTagsChange}
                   >
                     {/* Lead Temperature */}
@@ -227,7 +248,11 @@ function LeadForm() {
                     className="btn btn-primary px-4"
                     disabled={createLeadLoading}
                   >
-                    {createLeadLoading ? "Creating..." : "Create Lead"}
+                    {mode === "edit"
+                      ? "Update Lead"
+                      : createLeadLoading
+                      ? "Creating..."
+                      : "Create Lead"}
                   </button>
                 </div>
               </form>

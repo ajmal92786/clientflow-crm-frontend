@@ -1,8 +1,7 @@
 import Header from "../components/Header";
-import LeadForm from "../components/LeadForm";
 import Sidebar from "../components/Sidebar";
 
-function CreateLeadPage() {
+function SalesAgentListPage() {
   return (
     <>
       <main>
@@ -11,7 +10,11 @@ function CreateLeadPage() {
 
           <div className="col-md-10">
             <Header />
-            <LeadForm mode="create" />
+
+            <div className="text-center">
+              <h2>Sales Agent Management</h2>
+              <p className="text-danger">This page is under progress</p>
+            </div>
           </div>
         </div>
       </main>
@@ -19,4 +22,4 @@ function CreateLeadPage() {
   );
 }
 
-export default CreateLeadPage;
+export default SalesAgentListPage;

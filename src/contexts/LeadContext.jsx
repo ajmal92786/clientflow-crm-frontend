@@ -33,7 +33,7 @@ export function LeadProvider({ children }) {
     }
   }
 
-  async function fetchLeadById(id) {
+  async function getLeadById(id) {
     try {
       setLeadDetailsLoading(true);
       setLeadDetailsError(null);
@@ -62,6 +62,15 @@ export function LeadProvider({ children }) {
     }
   }
 
+  async function updateLeadById(id, data) {
+    try {
+      const res = await axiosInstance.put(`/leads/${id}`, data);
+      return res.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   useEffect(() => {
     fetchLeads();
   }, []);
@@ -77,8 +86,9 @@ export function LeadProvider({ children }) {
         leadDetailsError,
         createLeadLoading,
         fetchLeads,
-        fetchLeadById,
+        getLeadById,
         createLead,
+        updateLeadById,
       }}
     >
       {children}
