@@ -12,6 +12,7 @@ export function LeadProvider({ children }) {
 
   const [leadsLoading, setLeadsLoading] = useState(true);
   const [leadDetailsLoading, setLeadDetailsLoading] = useState(true);
+  const [createLeadLoading, setCreateLeadLoading] = useState(false);
 
   const [leadsError, setLeadsError] = useState(null);
   const [leadDetailsError, setLeadDetailsError] = useState(null);
@@ -49,6 +50,18 @@ export function LeadProvider({ children }) {
     }
   }
 
+  async function createLead(leadDetails) {
+    try {
+      setCreateLeadLoading(true);
+      const res = await axiosInstance.post(`/leads`, leadDetails);
+      return res.data;
+    } catch (error) {
+      throw error;
+    } finally {
+      setCreateLeadLoading(false);
+    }
+  }
+
   useEffect(() => {
     fetchLeads();
   }, []);
@@ -62,8 +75,10 @@ export function LeadProvider({ children }) {
         leadDetails,
         leadDetailsLoading,
         leadDetailsError,
+        createLeadLoading,
         fetchLeads,
         fetchLeadById,
+        createLead,
       }}
     >
       {children}

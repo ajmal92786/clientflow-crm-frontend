@@ -7,6 +7,14 @@ function AddCommentComponent() {
   const { addComment } = useCommentContext();
   const { leadId } = useParams();
 
+  const handleClick = (leadId, commentText) => {
+    if (!commentText) {
+      return;
+    }
+
+    addComment(leadId, commentText);
+  };
+
   return (
     <div className="p-3">
       <label className="fw-semibold mb-2">Add a comment: </label>
@@ -20,7 +28,7 @@ function AddCommentComponent() {
       <div className="d-flex justify-content-end mt-3">
         <button
           className="btn btn-success"
-          onClick={() => addComment(leadId, commentText)}
+          onClick={() => handleClick(leadId, commentText)}
         >
           Add Comment
         </button>

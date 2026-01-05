@@ -9,6 +9,7 @@ import LeadDetailsPage from "./pages/LeadDetailsPage";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import { ToastProvider } from "./contexts/ToastContext";
 
 const router = createBrowserRouter([
   { path: "/", element: <DashboardPage /> },
@@ -23,7 +24,9 @@ function App() {
       <LeadProvider>
         <SalesAgentProvider>
           <CommentProvider>
-            <RouterProvider router={router} />
+            <ToastProvider>
+              <RouterProvider router={router} />
+            </ToastProvider>
           </CommentProvider>
         </SalesAgentProvider>
       </LeadProvider>
