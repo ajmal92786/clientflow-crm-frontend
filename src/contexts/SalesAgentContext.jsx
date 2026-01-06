@@ -10,6 +10,7 @@ export function SalesAgentProvider({ children }) {
   const [salesAgents, setSalesAgents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [createAgentLoading, setCreateAgentLoading] = useState(false);
 
   const fetchSalesAgents = async () => {
     try {
@@ -25,12 +26,40 @@ export function SalesAgentProvider({ children }) {
     }
   };
 
+  const createSalesAgent = async (agentData) => {
+    try {
+      setCreateAgentLoading(true);
+
+      const res = await axiosInstance.post(`/agents`, agentData);
+      setSalesAgents((prev) => [...prev, res.data]);
+
+      return {
+        success: true,
+      };
+    } catch (error) {
+      return {
+        success: false,
+        message: error?.response?.data?.message,
+      };
+    } finally {
+      setCreateAgentLoading(false);
+    }
+  };
+
   useEffect(() => {
     fetchSalesAgents();
   }, []);
 
   return (
-    <SalesAgentContext.Provider value={{ salesAgents, loading, error }}>
+    <SalesAgentContext.Provider
+      value={{
+        salesAgents,
+        loading,
+        error,
+        createAgentLoading,
+        createSalesAgent,
+      }}
+    >
       {children}
     </SalesAgentContext.Provider>
   );

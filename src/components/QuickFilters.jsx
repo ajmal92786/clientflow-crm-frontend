@@ -1,6 +1,8 @@
-import useLeadContext from "../contexts/LeadContext";
+import { useNavigate } from "react-router-dom";
 
 function QuickFilters() {
+  const navigate = useNavigate();
+
   const statuses = ["New", "Contacted", "Qualified", "Proposal Sent", "Closed"];
 
   return (
@@ -9,7 +11,12 @@ function QuickFilters() {
       <div className="d-flex justify-content-center">
         {statuses.map((status) => (
           <div key={status}>
-            <button className="btn btn-outline-dark m-2">{status}</button>
+            <button
+              className="btn btn-outline-dark m-2"
+              onClick={() => navigate(`/leads?status=${status}`)}
+            >
+              {status}
+            </button>
           </div>
         ))}
       </div>

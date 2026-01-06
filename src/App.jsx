@@ -15,6 +15,7 @@ import SettingPage from "./pages/SettingPage";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import CreateAgentPage from "./pages/CreateAgentPage";
 
 const router = createBrowserRouter([
   { path: "/", element: <DashboardPage /> },
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
   { path: "/leads/:id/edit", element: <EditLeadPage /> },
   { path: "/sales", element: <LeadsByAgentPage /> },
   { path: "/agents", element: <SalesAgentListPage /> },
+  { path: "/agents/new", element: <CreateAgentPage /> },
   { path: "/reports", element: <ReportPage /> },
   { path: "/settings", element: <SettingPage /> },
 ]);

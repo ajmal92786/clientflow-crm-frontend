@@ -5,7 +5,7 @@ function LeadCardsSection() {
   const { leads, leadsLoading, leadsError } = useLeadContext();
 
   return (
-    <div className="">
+    <div>
       {leadsLoading && (
         <div className="w-100 text-center p-3">
           <div className="spinner-border text-dark" role="status">
@@ -15,7 +15,9 @@ function LeadCardsSection() {
       )}
 
       {!leadsLoading && leadsError && (
-        <div className="p-3 text-danger">Something went wrong!</div>
+        <div className="p-3 fw-semibold text-center text-danger">
+          Something went wrong!
+        </div>
       )}
 
       {!leadsLoading && !leadsError && (
