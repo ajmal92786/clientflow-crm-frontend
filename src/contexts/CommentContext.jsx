@@ -23,13 +23,14 @@ export function CommentProvider({ children }) {
     }
   };
 
-  const addComment = async (leadId, commentText) => {
+  const addComment = async (leadId, commentData) => {
     try {
-      const res = await axiosInstance.post(`/leads/${leadId}/comments`, {
-        commentText,
-      });
+      const res = await axiosInstance.post(
+        `/leads/${leadId}/comments`,
+        commentData
+      );
 
-      fetchComments(leadId);
+      setComments((prev) => [...prev, res.data]);
     } catch (error) {
       setError(error.response?.data?.message);
     } finally {

@@ -1,4 +1,4 @@
-import AddCommentComponent from "./AddCommentComponent";
+import AddCommentForm from "./AddCommentForm";
 import CommentsList from "./CommentsList";
 
 function CommentsSection() {
@@ -10,7 +10,7 @@ function CommentsSection() {
         <CommentsList />
       </div>
 
-      <AddCommentComponent />
+      <AddCommentForm />
     </div>
   );
 }

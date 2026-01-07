@@ -10,12 +10,12 @@ import CreateLeadPage from "./pages/CreateLeadPage";
 import EditLeadPage from "./pages/EditLeadPage";
 import LeadsByAgentPage from "./pages/LeadsByAgentPage";
 import SalesAgentListPage from "./pages/SalesAgentListPage";
+import CreateAgentPage from "./pages/CreateAgentPage";
 import ReportPage from "./pages/ReportPage";
 import SettingPage from "./pages/SettingPage";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import CreateAgentPage from "./pages/CreateAgentPage";
 
 const router = createBrowserRouter([
   { path: "/", element: <DashboardPage /> },
