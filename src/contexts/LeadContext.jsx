@@ -71,6 +71,24 @@ export function LeadProvider({ children }) {
     }
   }
 
+  async function deleteLead(id) {
+    try {
+      const res = await axiosInstance.delete(`/leads/${id}`);
+
+      setLeads((prev) => prev.filter((lead) => lead.id !== id));
+      return {
+        success: true,
+        message: res.data.message || "Lead deleted successfully",
+      };
+    } catch (error) {
+      return {
+        success: false,
+        message:
+          error.response?.data?.message || "Error in deleting lead by ID",
+      };
+    }
+  }
+
   useEffect(() => {
     fetchLeads();
   }, []);
@@ -89,6 +107,7 @@ export function LeadProvider({ children }) {
         getLeadById,
         createLead,
         updateLeadById,
+        deleteLead,
       }}
     >
       {children}

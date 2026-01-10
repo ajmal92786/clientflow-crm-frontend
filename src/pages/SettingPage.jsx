@@ -1,4 +1,6 @@
+import AgentManagementSection from "../components/AgentManagementSection";
 import Header from "../components/Header";
+import LeadManagementSection from "../components/LeadManagementSection";
 import Sidebar from "../components/Sidebar";
 
 function SettingPage() {
@@ -11,9 +13,16 @@ function SettingPage() {
           <div className="col-md-10">
             <Header />
 
-            <div className="text-center">
-              <h2>Setting Page</h2>
-              <p className="text-danger">This page is under progress</p>
+            <div className="py-3">
+              <h2 className="text-center">Settings</h2>
+
+              <div className="mt-3 d-flex justify-content-center">
+                <div className="col-md-8">
+                  <LeadManagementSection />
+
+                  <AgentManagementSection />
+                </div>
+              </div>
             </div>
           </div>
         </div>

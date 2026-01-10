@@ -22,7 +22,9 @@ function LeadList() {
         )}
 
         {!leadsLoading && leadsError && (
-          <div className="p-3 text-danger">Something went wrong!</div>
+          <div className="p-3 text-danger text-center fw-semibold">
+            Something went wrong!
+          </div>
         )}
 
         {!leadsLoading && !leadsError && (

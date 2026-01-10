@@ -46,6 +46,26 @@ export function SalesAgentProvider({ children }) {
     }
   };
 
+  const deleteSalesAgent = async (id) => {
+    try {
+      const res = await axiosInstance.delete(`/agents/${id}`);
+
+      setSalesAgents((prev) => prev.filter((agent) => agent.id !== id));
+      return {
+        success: true,
+        message: res.data?.message,
+      };
+    } catch (error) {
+      console.log(error);
+
+      return {
+        success: false,
+        message:
+          error.response?.data?.message || "Error in deleting sales agentby ID",
+      };
+    }
+  };
+
   useEffect(() => {
     fetchSalesAgents();
   }, []);
@@ -58,6 +78,7 @@ export function SalesAgentProvider({ children }) {
         error,
         createAgentLoading,
         createSalesAgent,
+        deleteSalesAgent,
       }}
     >
       {children}
