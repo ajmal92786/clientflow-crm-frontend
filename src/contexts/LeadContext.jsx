@@ -54,6 +54,8 @@ export function LeadProvider({ children }) {
     try {
       setCreateLeadLoading(true);
       const res = await axiosInstance.post(`/leads`, leadDetails);
+
+      setLeads((prev) => [...prev, res.data]);
       return res.data;
     } catch (error) {
       throw error;

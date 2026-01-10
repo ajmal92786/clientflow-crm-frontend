@@ -14,7 +14,15 @@ function AgentManagementSection() {
     const result = await deleteSalesAgent(agentId);
 
     setDeletingId(null);
-    showToast(result.message, "success");
+
+    if (!result.success && result.message.includes("assigned leads")) {
+      showToast(
+        "This agent has active leads. Reassign or delete leads first.",
+        "warning"
+      );
+    } else {
+      showToast(result.message, result.success ? "success" : "danger");
+    }
   };
 
   return (
@@ -67,7 +75,9 @@ function AgentManagementSection() {
             </div>
           ) : (
             <div className="text-center">
-              <p className="text-danger fw-semibold">No leads available.</p>
+              <p className="text-danger fw-semibold">
+                No sales agents available.
+              </p>
             </div>
           )}
         </>

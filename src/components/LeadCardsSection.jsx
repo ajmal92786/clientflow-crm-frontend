@@ -32,7 +32,7 @@ function LeadCardsSection() {
               ))}
             </div>
           ) : (
-            <div className="p-3">No leads found.</div>
+            <div className="p-3 text-center text-danger">No leads found.</div>
           )}
         </>
       )}

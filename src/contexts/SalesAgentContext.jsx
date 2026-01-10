@@ -51,6 +51,7 @@ export function SalesAgentProvider({ children }) {
       const res = await axiosInstance.delete(`/agents/${id}`);
 
       setSalesAgents((prev) => prev.filter((agent) => agent.id !== id));
+
       return {
         success: true,
         message: res.data?.message,
@@ -61,7 +62,7 @@ export function SalesAgentProvider({ children }) {
       return {
         success: false,
         message:
-          error.response?.data?.message || "Error in deleting sales agentby ID",
+          error.response?.data?.message || "Error in deleting sales agent",
       };
     }
   };

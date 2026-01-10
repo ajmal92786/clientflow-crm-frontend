@@ -60,7 +60,7 @@ function SalesAgentListPage() {
                         </table>
                       </div>
                     ) : (
-                      <div className="text-center fs-5 fw-bold">
+                      <div className="text-center fs-5 fw-bold text-danger">
                         No sales agents found.
                       </div>
                     )}

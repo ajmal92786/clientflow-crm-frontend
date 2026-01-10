@@ -26,7 +26,9 @@ function AgentReportCard({ loading, error, data }) {
               {data.length > 0 ? (
                 <LeadsByAgentBarChart data={data} />
               ) : (
-                <div>No data available.</div>
+                <div className="text-center text-danger">
+                  No data available.
+                </div>
               )}
             </>
           )}
