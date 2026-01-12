@@ -6,7 +6,7 @@ function PipelineReportCard({ loading, error, stats }) {
       <div className="card border-0 shadow-sm">
         <h5 className="card-header">Total Leads Closed & In Pipeline</h5>
 
-        <div className="card-body col-md-5">
+        <div className="card-body">
           {loading && (
             <div className="w-100 text-center p-3">
               <div className="spinner-border text-dark" role="status">
