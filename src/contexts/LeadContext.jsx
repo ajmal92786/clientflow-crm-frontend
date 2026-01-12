@@ -67,6 +67,8 @@ export function LeadProvider({ children }) {
   async function updateLeadById(id, data) {
     try {
       const res = await axiosInstance.put(`/leads/${id}`, data);
+
+      fetchLeads();
       return res.data;
     } catch (error) {
       throw error;

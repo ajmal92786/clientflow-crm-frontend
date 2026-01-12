@@ -51,10 +51,8 @@ function LeadManagementSection() {
                       <tr key={lead.id}>
                         <td className="fw-semibold">{lead.name}</td>
                         <td>{lead.status}</td>
-                        <td className="fw-semibold">
-                          {lead.salesAgent
-                            ? lead.salesAgent.name
-                            : "Not available"}
+                        <td className="fw-semibold text-center">
+                          {lead.salesAgent ? lead.salesAgent.name : "-"}
                         </td>
                         <td className="text-center">
                           <button

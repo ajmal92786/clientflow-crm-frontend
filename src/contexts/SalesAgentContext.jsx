@@ -54,11 +54,9 @@ export function SalesAgentProvider({ children }) {
 
       return {
         success: true,
-        message: res.data?.message,
+        message: res.data?.message || "Sales agent deleted successfully",
       };
     } catch (error) {
-      console.log(error);
-
       return {
         success: false,
         message:

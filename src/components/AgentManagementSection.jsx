@@ -15,13 +15,10 @@ function AgentManagementSection() {
 
     setDeletingId(null);
 
-    if (!result.success && result.message.includes("assigned leads")) {
-      showToast(
-        "This agent has active leads. Reassign or delete leads first.",
-        "warning"
-      );
+    if (result.success) {
+      showToast(result.message, "success");
     } else {
-      showToast(result.message, result.success ? "success" : "danger");
+      showToast(result.message, "danger");
     }
   };
 

@@ -36,7 +36,7 @@ function LeadTable({ leads }) {
                 {lead.status}
               </div>
             </td>
-            <td>{lead.salesAgent.name}</td>
+            <td>{lead.salesAgent ? lead.salesAgent.name : "-"}</td>
             <td>
               <div
                 className={`badge py-2 ${
