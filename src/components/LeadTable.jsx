@@ -7,11 +7,11 @@ function LeadTable({ leads }) {
     <table className="table">
       <thead className="table-secondary">
         <tr>
-          <th>Lead</th>
-          <th>Status</th>
-          <th>Sales Agent</th>
-          <th>Priority</th>
-          <th>Time To Close</th>
+          <th>Lead Name</th>
+          <th className="text-center">Status</th>
+          <th className="text-center">Sales Agent</th>
+          <th className="text-center">Priority</th>
+          <th className="text-center">Time To Close</th>
           <th className="text-end">Source</th>
         </tr>
       </thead>
@@ -23,9 +23,9 @@ function LeadTable({ leads }) {
             onClick={() => navigate(`/leads/${lead.id}`)}
           >
             <td className="fw-bold">{lead.name}</td>
-            <td>
+            <td className="text-center">
               <div
-                className={`badge py-2 ${
+                className={`col-8 badge py-2 ${
                   lead.status === "Closed"
                     ? "bg-danger"
                     : lead.status === "New"
@@ -36,10 +36,12 @@ function LeadTable({ leads }) {
                 {lead.status}
               </div>
             </td>
-            <td>{lead.salesAgent ? lead.salesAgent.name : "-"}</td>
-            <td>
+            <td className="text-center">
+              {lead.salesAgent ? lead.salesAgent.name : "-"}
+            </td>
+            <td className="text-center">
               <div
-                className={`badge py-2 ${
+                className={`col-8 badge py-2 ${
                   lead.priority === "High"
                     ? "bg-danger"
                     : lead.priority === "Medium"
@@ -50,7 +52,7 @@ function LeadTable({ leads }) {
                 {lead.priority}
               </div>
             </td>
-            <td>{lead.timeToClose}</td>
+            <td className="text-center">{lead.timeToClose}</td>
             <td className="text-end">{lead.source}</td>
           </tr>
         ))}

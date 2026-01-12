@@ -44,14 +44,14 @@ function LeadStatusSummary() {
   });
 
   return (
-    <div className="px-4 mt-5">
+    <div className="px-3 mt-5">
       <h4 className="text-center mb-4">Lead Status</h4>
-      <div className="row g-3 justify-content-center">
+      <div className="row g-2 justify-content-center">
         {Object.entries(STATUS_CONFIG).map(([status, cfg]) => {
           const Icon = cfg.icon;
 
           return (
-            <div key={status} className="col-md-2">
+            <div key={status} className="col-5 col-md-2">
               <StatusItem
                 counts={counts}
                 status={status}

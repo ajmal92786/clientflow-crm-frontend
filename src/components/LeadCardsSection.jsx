@@ -24,9 +24,9 @@ function LeadCardsSection() {
         <>
           <h4 className="py-3 my-2 text-center">Recent Leads</h4>
           {leads.length > 0 ? (
-            <div className="row gx-5 m-0  justify-content-center mb-4">
+            <div className="gx-5 gy-3 m-0 mb-4 row justify-content-center">
               {leads.slice(0, 4).map((lead) => (
-                <div key={lead.id} className="col-md-2">
+                <div key={lead.id} className="col-5 col-md-3 col-lg-2">
                   <LeadCard lead={lead} />
                 </div>
               ))}

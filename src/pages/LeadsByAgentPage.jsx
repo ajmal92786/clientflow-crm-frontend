@@ -91,7 +91,10 @@ function LeadsByAgentPage() {
                           </h5>
                           <div className="card-body">
                             {leads.map((lead) => (
-                              <div className="row py-2 fw-semibold text-start border-bottom">
+                              <div
+                                key={lead.id}
+                                className="row py-2 fw-semibold text-start border-bottom"
+                              >
                                 <div className="col-md-3">{lead.name}</div>
                                 <div className="col-md-3">{lead.status}</div>
                                 <div className="col-md-3">{lead.priority}</div>

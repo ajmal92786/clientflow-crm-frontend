@@ -6,17 +6,17 @@ import { IoMdSettings } from "react-icons/io";
 
 function Sidebar() {
   const linkClass = ({ isActive }) =>
-    `nav-link rounded px-3 d-flex align-items-center gap-2 text-white ${
+    `nav-link rounded d-flex align-items-center gap-2 text-white ${
       isActive ? "bg-secondary" : ""
     }`;
 
   return (
-    <aside className="col-md-2 p-3 fs-5 bg-dark" style={{ minHeight: "100vh" }}>
+    <aside className="p-2 fs-5">
       <ul className="nav mt-5 gap-2">
         <li className="nav-item w-100">
           <NavLink to="/" className={linkClass}>
             <MdDashboard size={22} />
-            <span>Dashboard</span>
+            <span className="text-truncate">Dashboard</span>
           </NavLink>
         </li>
 
