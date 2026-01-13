@@ -6,7 +6,10 @@ import QuickFilters from "./QuickFilters";
 
 function Dashboard() {
   return (
-    <div className="col-md-9 col-lg-10 col-xxl-9 p-0 bg-body-tertiary">
+    <div
+      className="col-md-9 col-lg-10 col-xxl-9 p-0 bg-body-tertiary"
+      style={{ minHeight: "100vh" }}
+    >
       <Header />
       <LeadCardsSection />
       <LeadStatusSummary />

@@ -39,7 +39,7 @@ function SalesAgentListPage() {
             <Sidebar />
           </div>
 
-          <div className="col-md-10">
+          <div className="col-md-10" style={{ minHeight: "100vh" }}>
             <Header />
 
             <h2 className="text-center mb-3">Sales Agent Management</h2>

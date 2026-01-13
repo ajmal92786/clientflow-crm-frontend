@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useLeadContext from "../contexts/LeadContext";
 import useToastContext from "../contexts/ToastContext";
 
 function LeadManagementSection() {
   const [deletingId, setDeletingId] = useState(null);
-  const { leads, leadsLoading, leadsError, deleteLead } = useLeadContext();
+  const { leads, leadsLoading, leadsError, fetchLeads, deleteLead } =
+    useLeadContext();
   const { showToast } = useToastContext();
 
   const handleLeadDelete = async (leadId) => {
@@ -15,6 +16,10 @@ function LeadManagementSection() {
     setDeletingId(null);
     showToast(result.message, "success");
   };
+
+  useEffect(() => {
+    fetchLeads();
+  }, []);
 
   return (
     <>

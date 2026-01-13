@@ -8,7 +8,7 @@ function LeadList() {
   const { leads, leadsLoading, leadsError } = useLeadContext();
 
   return (
-    <div className="col-md-10">
+    <div className="col-md-10" style={{ minHeight: "100vh" }}>
       <Header />
       <LeadFilters />
 
