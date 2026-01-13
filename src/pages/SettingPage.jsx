@@ -36,7 +36,7 @@ function SettingPage() {
             <Sidebar />
           </div>
 
-          <div className="col-md-10">
+          <div className="col-md-9 col-lg-10 col-xxl-9">
             <Header />
 
             <div className="py-3">

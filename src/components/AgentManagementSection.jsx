@@ -42,33 +42,35 @@ function AgentManagementSection() {
         <>
           {salesAgents.length > 0 ? (
             <div className="card border-0 shadow">
-              <table className="table">
-                <thead>
-                  <tr className="table-dark">
-                    <th>Agent Name</th>
-                    <th>Email</th>
-                    <th className="text-center">More</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {salesAgents.map((agent) => (
-                    <tr key={agent.id}>
-                      <td className="fw-semibold">{agent.name}</td>
-                      <td>{agent.email}</td>
-                      <td className="text-center">
-                        <button
-                          className="btn btn-sm btn-danger"
-                          disabled={deletingId === agent.id}
-                          onClick={() => handleAgentDelete(agent.id)}
-                        >
-                          {deletingId === agent.id ? "Deleting..." : "Delete"}
-                        </button>
-                      </td>
+              <div className="table-responsive">
+                <table className="table table-hover">
+                  <thead>
+                    <tr className="table-dark">
+                      <th>Agent Name</th>
+                      <th>Email</th>
+                      <th className="text-center">More</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+
+                  <tbody>
+                    {salesAgents.map((agent) => (
+                      <tr key={agent.id}>
+                        <td className="fw-semibold">{agent.name}</td>
+                        <td>{agent.email}</td>
+                        <td className="text-center">
+                          <button
+                            className="btn btn-sm btn-danger"
+                            disabled={deletingId === agent.id}
+                            onClick={() => handleAgentDelete(agent.id)}
+                          >
+                            {deletingId === agent.id ? "Deleting..." : "Delete"}
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           ) : (
             <div className="text-center">
