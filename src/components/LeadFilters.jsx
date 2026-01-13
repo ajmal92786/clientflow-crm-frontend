@@ -46,7 +46,7 @@ function LeadFilters() {
       <h3 className="col-md-2">Filters:</h3>
 
       {/* Filters */}
-      <div className="col-md-6 d-flex gap-2">
+      <div className="col-8 col-md-6 d-flex gap-2">
         <select
           className="form-select"
           onChange={(e) => updateParam("status", e.target.value)}
@@ -83,7 +83,7 @@ function LeadFilters() {
       </div>
 
       {/* Sort */}
-      <div className="col-md-3 d-flex gap-2">
+      <div className="ms-1 col-2 col-md-3 d-flex justify-content-end">
         <select
           className="form-select"
           onChange={(e) => {

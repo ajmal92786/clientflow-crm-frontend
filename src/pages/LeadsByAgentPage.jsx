@@ -47,7 +47,7 @@ function LeadsByAgentPage() {
           </div>
 
           <div
-            className="offcanvas offcanvas-start p-0"
+            className="offcanvas offcanvas-start p-0 w-50"
             tabindex="-1"
             id="navbarOffcanvas"
             aria-labelledby="navbarOffcanvasLabel"
