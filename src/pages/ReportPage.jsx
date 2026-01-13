@@ -85,7 +85,7 @@ function ReportPage() {
 
           <div
             className="col-md-9 col-lg-10 col-xxl-9"
-            style={{ minHeight: "100vh" }}
+            style={{ minHeight: "100dvh" }}
           >
             <Header />
 
