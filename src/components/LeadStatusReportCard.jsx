@@ -1,8 +1,9 @@
+import { useEffect } from "react";
 import useLeadContext from "../contexts/LeadContext";
 import StatusDistributionChart from "./StatusDistributionChart";
 
 function LeadStatusReportCard() {
-  const { leads, leadsLoading, leadsError } = useLeadContext();
+  const { leads, leadsLoading, leadsError, fetchLeads } = useLeadContext();
 
   const statusData = leads.reduce((acc, lead) => {
     const status = lead.status;
@@ -16,6 +17,10 @@ function LeadStatusReportCard() {
     }
 
     return acc;
+  }, []);
+
+  useEffect(() => {
+    fetchLeads();
   }, []);
 
   return (

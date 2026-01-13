@@ -20,7 +20,7 @@ function LeadDetails() {
   }, []);
 
   return (
-    <div className="col-md-10 p-0">
+    <div className="col-md-9 col-lg-10 col-xxl-9 p-0">
       <Header />
 
       {leadDetailsLoading && (
@@ -38,8 +38,8 @@ function LeadDetails() {
       {!leadDetailsLoading && !leadDetailsError && leadDetails && (
         <>
           <div className="mt-4 mb-3 d-flex flex-column align-items-center">
-            <div className="col-md-8 card border-0 shadow">
-              <div className="p-3 card-header d-flex justify-content-between align-items-center">
+            <div className="col-10 col-md-8 card border-0 shadow">
+              <div className="p-3 card-header d-flex gap-2 flex-wrap justify-content-between align-items-center">
                 <h5 className="mb-0">
                   <span className="text-muted">Lead Management:</span>{" "}
                   {leadDetails.name}
@@ -48,7 +48,7 @@ function LeadDetails() {
                   onClick={() => handleEditLeadClick(leadDetails)}
                   className="btn btn-sm btn-outline-primary"
                 >
-                  Edit Lead Details
+                  Edit Lead
                 </button>
               </div>
 

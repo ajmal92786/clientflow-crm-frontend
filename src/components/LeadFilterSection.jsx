@@ -1,13 +1,13 @@
 function LeadFilterSection({ filters, setFilters }) {
   return (
     <div className="row m-0 my-2 justify-content-center">
-      <div className="col-md-8 ">
+      <div className="col-md-9">
         <div className="card">
           <div className="row m-0 py-3 align-items-center">
-            <div className="col-md-1">
+            <div className="col-1">
               <label className="fw-semibold">Filters:</label>
             </div>
-            <div className="col-md-4">
+            <div className="col-4">
               <select
                 className="form-select"
                 value={filters.status}
@@ -33,7 +33,7 @@ function LeadFilterSection({ filters, setFilters }) {
               </select>
             </div>
 
-            <div className="col-md-4">
+            <div className="col-4">
               <select
                 className="form-select mx-2"
                 value={filters.priority}
@@ -52,7 +52,7 @@ function LeadFilterSection({ filters, setFilters }) {
                 ))}
               </select>
             </div>
-            <div className="col-md-3">
+            <div className="col-3">
               <select
                 className="form-select"
                 value={filters.sortBy}

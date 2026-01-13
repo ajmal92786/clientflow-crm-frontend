@@ -61,7 +61,10 @@ function LeadsByAgentPage() {
             <Sidebar />
           </div>
 
-          <div className="col-md-10" style={{ minHeight: "100vh" }}>
+          <div
+            className="col-md-9 col-lg-10 col-xxl-9"
+            style={{ minHeight: "100vh" }}
+          >
             <Header />
 
             <div className="text-center">
@@ -69,7 +72,7 @@ function LeadsByAgentPage() {
 
               {salesAgents.length > 0 ? (
                 <div className="row m-0 justify-content-center mt-3 mb-4">
-                  <div className="col-md-8">
+                  <div className="col-md-9">
                     <select
                       className="form-select"
                       value={selectedAgentId}
@@ -110,7 +113,7 @@ function LeadsByAgentPage() {
                 <>
                   {leads.length > 0 ? (
                     <div className="row m-0 justify-content-center">
-                      <div className="col-md-8 rounded">
+                      <div className="col-md-9 rounded">
                         <div className="card shadow-sm">
                           <h5 className="card-header py-3 text-start">
                             Sales Agent: {selectedAgent.name}
@@ -121,12 +124,10 @@ function LeadsByAgentPage() {
                                 key={lead.id}
                                 className="row py-2 fw-semibold text-start border-bottom"
                               >
-                                <div className="col-md-3">{lead.name}</div>
-                                <div className="col-md-3">{lead.status}</div>
-                                <div className="col-md-3">{lead.priority}</div>
-                                <div className="col-md-3">
-                                  {lead.timeToClose}
-                                </div>
+                                <div className="col-3">{lead.name}</div>
+                                <div className="col-3">{lead.status}</div>
+                                <div className="col-3">{lead.priority}</div>
+                                <div className="col-3">{lead.timeToClose}</div>
                               </div>
                             ))}
                           </div>

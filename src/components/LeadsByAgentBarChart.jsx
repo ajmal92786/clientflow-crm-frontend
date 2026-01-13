@@ -35,7 +35,7 @@ function LeadsByAgentBarChart({ data }) {
   };
 
   return (
-    <div>
+    <div style={{ minHeight: "150px" }}>
       <Bar data={chartData} options={options} />
     </div>
   );

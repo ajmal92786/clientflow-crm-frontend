@@ -39,12 +39,15 @@ function SalesAgentListPage() {
             <Sidebar />
           </div>
 
-          <div className="col-md-10" style={{ minHeight: "100vh" }}>
+          <div
+            className="col-md-9 col-lg-10 col-xxl-9"
+            style={{ minHeight: "100vh" }}
+          >
             <Header />
 
             <h2 className="text-center mb-3">Sales Agent Management</h2>
             <div className="d-flex justify-content-center">
-              <div className="col-md-8">
+              <div className="col-10 col-md-8">
                 {loading && (
                   <div className="w-100 text-center p-3">
                     <div className="spinner-border text-dark" role="status">
