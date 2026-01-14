@@ -25,6 +25,14 @@ function LeadListPage() {
             id="navbarOffcanvas"
             aria-labelledby="navbarOffcanvasLabel"
           >
+            <div className="offcanvas-header bg-dark">
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="offcanvas"
+              ></button>
+            </div>
+
             <div className="offcanvas-body p-0 bg-dark">
               <Sidebar />
             </div>
