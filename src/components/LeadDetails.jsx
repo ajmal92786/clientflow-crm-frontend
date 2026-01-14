@@ -20,7 +20,10 @@ function LeadDetails() {
   }, []);
 
   return (
-    <div className="col-md-9 col-lg-10 col-xxl-9 p-0">
+    <div
+      className="col-md-9 col-lg-10 col-xxl-9 p-0"
+      style={{ minHeight: "100dvh" }}
+    >
       <Header />
 
       {leadDetailsLoading && (

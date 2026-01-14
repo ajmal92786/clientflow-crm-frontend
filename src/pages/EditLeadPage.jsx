@@ -46,7 +46,10 @@ function EditLeadPage() {
             <Sidebar />
           </div>
 
-          <div className="col-md-9 col-lg-10 col-xxl-9">
+          <div
+            className="col-md-9 col-lg-10 col-xxl-9"
+            style={{ minHeight: "100dvh" }}
+          >
             <Header />
 
             {leadDetailsLoading && (
