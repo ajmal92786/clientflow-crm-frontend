@@ -32,12 +32,13 @@ function EditLeadPage() {
           </div>
 
           <div
-            className="offcanvas offcanvas-start p-0 w-50"
-            tabindex="-1"
+            className="offcanvas offcanvas-start p-0 w-50 bg-dark"
+            data-bs-scroll="true"
+            tabIndex="-1"
             id="navbarOffcanvas"
             aria-labelledby="navbarOffcanvasLabel"
           >
-            <div className="offcanvas-body p-0 bg-dark">
+            <div className="offcanvas-body p-0">
               <Sidebar />
             </div>
           </div>

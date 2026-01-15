@@ -20,20 +20,13 @@ function DashboardPage() {
           </div>
 
           <div
-            className="offcanvas offcanvas-start p-0 w-50"
-            tabindex="-1"
+            className="offcanvas offcanvas-start p-0 w-50 bg-dark"
+            data-bs-scroll="true"
+            tabIndex="-1"
             id="navbarOffcanvas"
             aria-labelledby="navbarOffcanvasLabel"
           >
-            <div className="offcanvas-header bg-dark">
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="offcanvas"
-              ></button>
-            </div>
-
-            <div className="offcanvas-body p-0 bg-dark">
+            <div className="offcanvas-body p-0">
               <Sidebar />
             </div>
           </div>
