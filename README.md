@@ -1,8 +1,10 @@
-# ClientFlow CRM 
+# ClientFlow CRM
 
 A full-stack, lightweight and modern **Customer Relationship Management(CRM)** application built to help teams manage leads, sales agents and performance insights efficiently.
 
-ClientFlow CRM focuses on clean UX, real‑world CRM workflows, and scalable architecture.
+Built with React frontend, Express/Node backend and MongoDB database.
+
+<!-- ClientFlow CRM focuses on clean UX, real‑world CRM workflows, and scalable architecture. -->
 
 ---
 
@@ -27,11 +29,15 @@ git clone https://github.com/ajmal92786/clientflow-crm-frontend.git
 cd clientflow-crm-frontend
 npm install
 ```
+
 Create .env file:
+
 ```
 VITE_API_BASE_URL=https://clientflow-crm-backend.vercel.app/
 ```
+
 Start the app:
+
 ```
 npm run dev
 ```
@@ -40,10 +46,15 @@ npm run dev
 
 ## Technologies
 
+**Frontend**
+
 - React JS
 - React Router
 - Bootstrap
 - Chart.js
+
+**Backend**
+
 - Node.js
 - Express.js
 - MongoDB (Mongoose)
@@ -68,28 +79,33 @@ Watch a walkthrough (5-7 minutes) of all the major features of this app:
 - Quick action to add new leads
 
 **Leads Management**
+
 - View all leads in a tabular format
 - Filter by:
- - Status
- - Sales Agent
- - Priority
+- Status
+- Sales Agent
+- Priority
 - Sort by Time to Close
 
 **Lead Details**
+
 - View complete lead information
 - Edit lead details (status, agent, priority, source, etc.)
 - Add comments to track lead progress
 
 **Sales Agents**
+
 - List all sales agents
 - Create new sales agents
 
 **Reports & Analytics**
+
 - Pie Chart: Closed vs In‑Pipeline leads
 - Bar Chart: Leads closed by each sales agent
 - Pie Chart: Lead distribution by status
 
 **Settings**
+
 - Manage all leads
 - Manage all sales agents
 - Safe delete with validation & feedback
@@ -97,7 +113,6 @@ Watch a walkthrough (5-7 minutes) of all the major features of this app:
 <!-- **Authentication**
 - User Signup and login with JWT
 - Protected routes for adding/editing leads or agents -->
-
 
 ## 🔗 API Reference
 
@@ -109,11 +124,11 @@ Fetch all leads (supports filters & sorting)
 
 Query Params:
 
-* `status`
-* `salesAgent`
-* `priority`
-* `sortBy`
-* `order`
+- `status`
+- `salesAgent`
+- `priority`
+- `sortBy`
+- `order`
 
 Response:
 
@@ -134,7 +149,7 @@ Response:
 
 ---
 
-#### **GET /leads/****:id**
+#### **GET /leads/\*\***:id\*\*
 
 Fetch lead by ID
 
@@ -159,13 +174,13 @@ Body:
 
 ---
 
-#### **PUT /leads/****:id**
+#### **PUT /leads/\*\***:id\*\*
 
 Update lead details
 
 ---
 
-#### **DELETE /leads/****:id**
+#### **DELETE /leads/\*\***:id\*\*
 
 Delete a lead
 
@@ -178,12 +193,13 @@ Delete a lead
 Fetch all sales agents
 
 Response:
+
 ```json
 [
   {
     "id": "leadId",
     "name": "Agent Name",
-    "email": "agent@example.com",
+    "email": "agent@example.com"
   }
 ]
 ```
@@ -205,7 +221,7 @@ Body:
 
 ---
 
-#### **DELETE /agents/****:id**
+#### **DELETE /agents/\*\***:id\*\*
 
 Delete sales agent
 
