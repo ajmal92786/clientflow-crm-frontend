@@ -114,6 +114,24 @@ Watch a walkthrough (5-7 minutes) of all the major features of this app:
 - User Signup and login with JWT
 - Protected routes for adding/editing leads or agents -->
 
+---
+
+## 📸 Screenshots
+
+### Dashboard Page
+
+![Dashboard Page](./screenshots/dashboard.png)
+
+### Product Listing
+
+![Product Listing](./screenshots/lead-list.png)
+
+### Report Page
+
+![Report Page](./screenshots/reports.png)
+
+---
+
 ## 🔗 API Reference
 
 ### 🔹 Leads APIs
