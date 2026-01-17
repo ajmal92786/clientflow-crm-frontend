@@ -50,6 +50,7 @@ npm run dev
 
 - React JS
 - React Router
+- Axios
 - Bootstrap
 - Chart.js
 
